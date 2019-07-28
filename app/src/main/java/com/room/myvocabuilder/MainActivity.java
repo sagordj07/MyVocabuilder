@@ -1,5 +1,6 @@
 package com.room.myvocabuilder;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
@@ -8,10 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity  {
+
+    public static final int ADD_REQUEST_CODE=1;
 
     private Toolbar toolbar;
     private ViewPager viewPager;
@@ -40,8 +45,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         viewPager.setAdapter(myTabAccessAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent=new Intent(MainActivity.this,AddwordActivity.class);
 
-        floatingActionButton.setOnClickListener(this);
+                    startActivity(intent);
+                }catch (Exception e)
+                {
+                    Toast.makeText(MainActivity.this,"exception:"+e,Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
 
 
     }
@@ -55,8 +73,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v) {
+    public boolean onOptionsItemSelected(MenuItem item) {
 
+        switch (item.getItemId())
+        {
+            case R.id.About_id:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
 
-    }
+        }
+
+    };
 }

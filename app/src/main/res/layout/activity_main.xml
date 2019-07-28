@@ -51,9 +51,8 @@
         android:src="@drawable/ic_add_black_24dp"
         android:layout_gravity="bottom|end"
         android:layout_margin="50dp"
+        android:clickable="true"
         />
-
-
 
 
 </android.support.design.widget.CoordinatorLayout>
