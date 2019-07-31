@@ -12,4 +12,11 @@
 
 
         />
+    <!--<item
+        android:id="@+id/close_id"
+        android:icon="@drawable/ic_close_black_24dp"
+        android:title="close"
+        android:iconTintMode="add"
+        app:showAsAction="ifRoom"
+        />-->
 </menu>

@@ -1,5 +1,6 @@
 package com.room.myvocabuilder;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -48,15 +49,11 @@ public class MainActivity extends AppCompatActivity  {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    Intent intent=new Intent(MainActivity.this,AddwordActivity.class);
 
-                    startActivity(intent);
-                }catch (Exception e)
-                {
-                    Toast.makeText(MainActivity.this,"exception:"+e,Toast.LENGTH_LONG).show();
-                }
+                Toast.makeText(MainActivity.this,"click",Toast.LENGTH_LONG).show();
 
+                Intent intent=new Intent(MainActivity.this,AddwordActivity.class);
+                startActivity(intent);
             }
         });
 
