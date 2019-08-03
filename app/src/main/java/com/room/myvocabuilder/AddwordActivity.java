@@ -12,10 +12,36 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class AddwordActivity extends AppCompatActivity {
 
-    private EditText title,meaning,example;
+
+    public static final String EXTRA_ID =
+            "com.room.roomfornote.EXTRA_ID";
+
+    public static final String EXTRA_TITLE =
+            "com.room.roomfornote.EXTRA_TITLE";
+
+    public static final String EXTRA_MEANING =
+            "com.room.roomfornote.EXTRA_MEANING";
+
+    public static final String EXTRA_EXAMPLE =
+            "com.room.roomfornote.EXTRA_EXAMPLE";
+
+    public static final String EXTRA_DATE =
+            "com.room.roomfornote.EXTRA_DATE";
+    public static final String EXTRA_TIME =
+            "com.room.roomfornote.EXTRA_TIME";
+
+    private  EditText title;
+    private  EditText meaning;
+    private EditText example;
     private Toolbar toolbar;
+
+    private WordRepository wordRepository;
+    private WordViewModel wordViewModel;
 
 
 
@@ -64,11 +90,55 @@ public class AddwordActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.save_id:
-                Toast.makeText(this,"saved word",Toast.LENGTH_LONG).show();
+                saveWord();
+                //Toast.makeText(this,"saved word",Toast.LENGTH_LONG).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
 
         }
+    }
+
+    private void saveWord() {
+
+        String WordTitle=title.getText().toString().trim();
+
+        String Meaning=meaning.getText().toString().trim();
+
+        String Example= example.getText().toString().trim();
+
+
+
+
+        if (WordTitle.trim().isEmpty() || Meaning.trim().isEmpty() || Example.trim().isEmpty()) {
+            Toast.makeText(this, "plese insert title & description", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        Calendar calforDate= Calendar.getInstance();
+        SimpleDateFormat currentDateFoemat= new SimpleDateFormat("MMM dd,yyyy");
+        String date=currentDateFoemat.format(calforDate.getTime());
+
+        Calendar calForTime= Calendar.getInstance();
+        SimpleDateFormat currentTimeformat= new SimpleDateFormat("hh:mm a");
+        String time=currentTimeformat.format(calForTime.getTime());
+
+        Intent data = new Intent();
+        data.putExtra(EXTRA_TITLE,WordTitle);
+        data.putExtra(EXTRA_MEANING, Meaning);
+        data.putExtra(EXTRA_EXAMPLE, Example);
+        data.putExtra(EXTRA_DATE, date);
+        data.putExtra(EXTRA_TIME, time);
+
+        setResult(RESULT_OK,data);
+
+        finish();
+
+
+
+
+
+
+
     }
 }

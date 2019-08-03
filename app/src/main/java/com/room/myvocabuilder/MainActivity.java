@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity  {
 
     public static final int ADD_REQUEST_CODE=1;
 
+    private WordViewModel wordViewModel;
+
     private Toolbar toolbar;
     private ViewPager viewPager;
     private TabLayout tabLayout;
@@ -53,9 +55,11 @@ public class MainActivity extends AppCompatActivity  {
                 Toast.makeText(MainActivity.this,"click",Toast.LENGTH_LONG).show();
 
                 Intent intent=new Intent(MainActivity.this,AddwordActivity.class);
+
                 startActivity(intent);
             }
         });
+
 
 
 
