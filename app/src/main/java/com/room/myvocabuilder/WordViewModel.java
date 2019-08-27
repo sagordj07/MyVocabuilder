@@ -42,6 +42,7 @@ public class WordViewModel extends AndroidViewModel {
        wordRepository.deleteAllWord();
 
     }
+
     public LiveData<List<WordTable>>getAllwords()
     {
         return Allwords;
