@@ -17,7 +17,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordHolder> {
 
     @NonNull
     @Override
-    public WordHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public WordHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
         View itemview= LayoutInflater.from(viewGroup.getContext())
         .inflate(R.layout.worditem,viewGroup,false);
         return new WordHolder(itemview);
@@ -41,6 +41,12 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordHolder> {
     public int getItemCount() {
         return wordTables.size();
     }
+
+    public WordTable setGetAt(int position)
+    {
+        return wordTables.get(position);
+    }
+
     public void setWordTables(List<WordTable>wordTables)
     {
         this.wordTables=wordTables;

@@ -67,6 +67,7 @@ public abstract class WordDatabase extends RoomDatabase {
             time=currentTimeformat.format(calForTime.getTime());
 
             wordTableDao.insert(new WordTable("example","demo","Sentence",date,time));
+            wordTableDao.insert(new WordTable("example2","demo2","Sentence2",date,time));
 
             return null;
         }

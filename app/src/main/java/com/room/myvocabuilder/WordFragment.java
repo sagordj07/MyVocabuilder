@@ -5,13 +5,18 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.card.MaterialCardView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.List;
@@ -24,7 +29,8 @@ public class WordFragment extends Fragment {
 
     private WordViewModel wordViewModel;
     private View wordview;
-    private RecyclerView recyclerView;
+    //private RecyclerView recyclerView;
+
 
 
 
@@ -39,7 +45,7 @@ public class WordFragment extends Fragment {
         // Inflate the layout for this fragment
         wordview= inflater.inflate(R.layout.fragment_word, container, false);
 
-        recyclerView = (RecyclerView) wordview.findViewById(R.id.Recycler_view_word);
+        final RecyclerView recyclerView =  wordview.findViewById(R.id.Recycler_view_word);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
 
