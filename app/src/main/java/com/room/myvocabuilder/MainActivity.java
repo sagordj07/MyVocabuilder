@@ -56,14 +56,15 @@ public class MainActivity extends AppCompatActivity  {
 
                 Intent intent=new Intent(MainActivity.this,AddwordActivity.class);
 
-                startActivity(intent);
+                startActivityForResult(intent,ADD_REQUEST_CODE);
             }
         });
 
 
 
-
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);

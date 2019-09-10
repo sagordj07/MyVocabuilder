@@ -19,21 +19,21 @@ public class AddwordActivity extends AppCompatActivity {
 
 
     public static final String EXTRA_ID =
-            "com.room.roomfornote.EXTRA_ID";
+            "com.room.myvocabuilder.EXTRA_ID";
 
     public static final String EXTRA_TITLE =
-            "com.room.roomfornote.EXTRA_TITLE";
+            "com.room.myvocabuilder.EXTRA_TITLE";
 
     public static final String EXTRA_MEANING =
-            "com.room.roomfornote.EXTRA_MEANING";
+            "com.room.myvocabuilder.EXTRA_MEANING";
 
     public static final String EXTRA_EXAMPLE =
-            "com.room.roomfornote.EXTRA_EXAMPLE";
+            "com.room.myvocabuilder.EXTRA_EXAMPLE";
 
     public static final String EXTRA_DATE =
-            "com.room.roomfornote.EXTRA_DATE";
+            "com.room.myvocabuilder.EXTRA_DATE";
     public static final String EXTRA_TIME =
-            "com.room.roomfornote.EXTRA_TIME";
+            "com.room.myvocabuilder.EXTRA_TIME";
 
     private  EditText title;
     private  EditText meaning;
@@ -72,8 +72,6 @@ public class AddwordActivity extends AppCompatActivity {
 
     }
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -98,7 +96,6 @@ public class AddwordActivity extends AppCompatActivity {
 
         }
     }
-
     private void saveWord() {
 
         String WordTitle=title.getText().toString().trim();
@@ -106,9 +103,6 @@ public class AddwordActivity extends AppCompatActivity {
         String Meaning=meaning.getText().toString().trim();
 
         String Example= example.getText().toString().trim();
-
-
-
 
         if (WordTitle.trim().isEmpty() || Meaning.trim().isEmpty() || Example.trim().isEmpty()) {
             Toast.makeText(this, "plese insert title & description", Toast.LENGTH_LONG).show();
@@ -132,13 +126,9 @@ public class AddwordActivity extends AppCompatActivity {
 
         setResult(RESULT_OK,data);
 
+        //Toast.makeText(this,"success",Toast.LENGTH_SHORT).show();
+
         finish();
-
-
-
-
-
-
 
     }
 }

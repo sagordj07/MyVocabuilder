@@ -3,6 +3,7 @@ package com.room.myvocabuilder;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.card.MaterialCardView;
@@ -20,6 +21,9 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
+import static com.room.myvocabuilder.MainActivity.ADD_REQUEST_CODE;
 
 
 /**
@@ -45,14 +49,14 @@ public class WordFragment extends Fragment {
         // Inflate the layout for this fragment
         wordview= inflater.inflate(R.layout.fragment_word, container, false);
 
-        final RecyclerView recyclerView =  wordview.findViewById(R.id.Recycler_view_word);
+        RecyclerView recyclerView =  wordview.findViewById(R.id.Recycler_view_word);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
 
         final WordAdapter wordAdapter=new WordAdapter();
         recyclerView.setAdapter(wordAdapter);
 
-        wordViewModel= ViewModelProviders.of(this).get(WordViewModel.class);
+        wordViewModel= ViewModelProviders.of(getActivity()).get(WordViewModel.class);
         wordViewModel.getAllwords().observe(this, new Observer<List<WordTable>>() {
             @Override
             public void onChanged(@Nullable List<WordTable> wordTables) {
@@ -63,12 +67,31 @@ public class WordFragment extends Fragment {
 
             }
         });
-
-
         return wordview;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if(requestCode==ADD_REQUEST_CODE && resultCode==RESULT_OK)
+        {
+            String Word_title=data.getStringExtra(AddwordActivity.EXTRA_TITLE);
+            String Word_meaning=data.getStringExtra(AddwordActivity.EXTRA_MEANING);
+            String Word_example=data.getStringExtra(AddwordActivity.EXTRA_EXAMPLE);
+            String Word_date=data.getStringExtra(AddwordActivity.EXTRA_DATE);
+            String Word_time=data.getStringExtra(AddwordActivity.EXTRA_TIME);
 
+            WordTable wordTable=new WordTable(Word_title,Word_meaning,Word_example,Word_date,Word_time);
 
+            wordViewModel.insert(wordTable);
+            Toast.makeText(getContext(),"saved",Toast.LENGTH_SHORT).show();
+
+        }
+        else {
+            Toast.makeText(getContext()," not saved",Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
 }

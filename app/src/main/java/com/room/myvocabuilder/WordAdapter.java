@@ -28,11 +28,11 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordHolder> {
 
     WordTable currentword=wordTables.get(position);
 
-    wordHolder.textWord.setText(currentword.getWordTitle());
-    wordHolder.textMeaning.setText(currentword.getWordMeaning());
-    wordHolder.textExample.setText(currentword.getWordExample());
-    wordHolder.textDate.setText(currentword.getDate());
-    wordHolder.textTime.setText(currentword.getTime());
+    wordHolder.textword.setText(currentword.getWordTitle());
+    wordHolder.textmeaning.setText(currentword.getWordMeaning());
+    wordHolder.textexample.setText(currentword.getWordExample());
+    wordHolder.textdate.setText(currentword.getDate());
+    wordHolder.texttime.setText(currentword.getTime());
 
 
     }
@@ -56,20 +56,20 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordHolder> {
 
     class WordHolder extends RecyclerView.ViewHolder{
 
-        private TextView textWord;
-        private TextView textMeaning;
-        private TextView textExample;
-        private TextView textDate;
-        private TextView textTime;
+        private TextView textword;
+        private TextView textmeaning;
+        private TextView textexample;
+        private TextView textdate;
+        private TextView texttime;
 
         public WordHolder(@NonNull View itemView) {
             super(itemView);
 
-            textWord=itemView.findViewById(R.id.text_view_title);
-            textMeaning=itemView.findViewById(R.id.text_view_meaning);
-            textExample=itemView.findViewById(R.id.text_view_example);
-            textDate=itemView.findViewById(R.id.text_view_date);
-            textTime=itemView.findViewById(R.id.text_view_time);
+            textword=itemView.findViewById(R.id.text_view_title);
+            textmeaning=itemView.findViewById(R.id.text_view_meaning);
+            textexample=itemView.findViewById(R.id.text_view_example);
+            textdate=itemView.findViewById(R.id.text_view_date);
+            texttime=itemView.findViewById(R.id.text_view_time);
 
 
         }
