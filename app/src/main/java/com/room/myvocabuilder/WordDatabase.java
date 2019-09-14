@@ -68,6 +68,7 @@ public abstract class WordDatabase extends RoomDatabase {
 
             wordTableDao.insert(new WordTable("example","demo","Sentence",date,time));
             wordTableDao.insert(new WordTable("example2","demo2","Sentence2",date,time));
+            wordTableDao.insert(new WordTable("example3","demo3","Sentence4",date,time));
 
             return null;
         }
